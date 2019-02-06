@@ -300,8 +300,9 @@ void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
     else {
         size_t st;
         fp = fopen(fname, "w");
+        assert(fp);
         st = fwrite(key, 1, keysize, fp);
-        if( st != (sizeof(key)/sizeof(char)) )
+        if( st != keysize )
         {
             errorMessage("save_key: fwrite is not successful");
         }   
@@ -323,7 +324,35 @@ void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
 
 void load_key(const char *fname, unsigned char *key, unsigned int keysize) {
 
-  /* Fill in your code here */
+    /* Fill in your code here */
+    int err;
+    FILE* fp;
+    size_t file_size;  
+    struct stat* fstat;
+
+    fstat = (struct stat*) malloc(sizeof(struct stat));
+    assert( fstat != NULL );
+    
+    err = stat(fname, fstat);
+    if( err )
+    {
+        errorMessage("load_key: file not exist");
+    }
+    else if( fstat->st_size == 0 )
+    {
+        errorMessage("load_key: file is empty");
+    }
+    else {
+        size_t st;
+        fp = fopen(fname, "r");
+        assert(fp != NULL);
+        st = fread(key, 1, keysize, fp);
+        if( st != keysize )
+        {
+            errorMessage("load_key: fwrite is not successful");
+        }
+        close(fp);
+    }
 }
 
 
