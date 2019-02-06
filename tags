@@ -1,0 +1,79 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AR	Makefile	/^AR=ar rc$/;"	m
+BASENAME	Makefile	/^BASENAME=trans$/;"	m
+BLOCKSIZE	transfer.h	38;"	d
+CC	Makefile	/^CC=gcc $/;"	m
+CFLAGS	Makefile	/^CFLAGS=-c $(INCLUDES) -g -Wall -DDEBUG$/;"	m
+CLIENT_INIT_ACK	transfer.h	/^     CLIENT_INIT_ACK,        \/* message 3 - client completed ack *\/$/;"	e	enum:__anon1
+CLIENT_INIT_EXCHANGE	transfer.h	/^     CLIENT_INIT_EXCHANGE,   \/* message 1 - start exchange *\/$/;"	e	enum:__anon1
+CMD_CREATE	transfer.h	46;"	d
+CRLIB	Makefile	/^CRLIB=crlib$/;"	m
+CRLIBOBJS	Makefile	/^CRLIBOBJS=transfer.o \\$/;"	m
+EXIT	transfer.h	/^     EXIT,                   \/* exit the protocol *\/$/;"	e	enum:__anon1
+FILE_PREFIX	transfer.c	472;"	d	file:
+FILE_XFER_BLOCK	transfer.h	/^     FILE_XFER_BLOCK,        \/* transfer file block *\/$/;"	e	enum:__anon1
+FILE_XFER_INIT	transfer.h	/^     FILE_XFER_INIT,         \/* initialize transfer *\/$/;"	e	enum:__anon1
+INADDR_NONE	siis-network.h	37;"	d
+INCLUDES	Makefile	/^INCLUDES=-I. -I\/usr\/include\/$/;"	m
+IVSIZE	transfer.h	41;"	d
+KEYSIZE	transfer.h	39;"	d
+LDFLAGS	Makefile	/^LDFLAGS=$(LIBDIRS)$/;"	m
+LIBDIRS	Makefile	/^LIBDIRS=-L. -L\/usr\/lib64\/$/;"	m
+LIBS	Makefile	/^LIBS=-lcrypto -lm $/;"	m
+LINK	Makefile	/^LINK=gcc -g$/;"	m
+MAX_BLOCK_SIZE	transfer.h	37;"	d
+PROTOCOL_PORT	siis-network.h	34;"	d
+PUBKEY_FILE	transfer.h	43;"	d
+ProtoMessageHdr	transfer.h	/^} ProtoMessageHdr;$/;"	t	typeref:struct:__anon2
+ProtoMessageType	transfer.h	/^} ProtoMessageType;$/;"	t	typeref:enum:__anon1
+RANLIB	Makefile	/^RANLIB=ranlib$/;"	m
+SERVER_INIT_ACK	transfer.h	/^     SERVER_INIT_ACK,        \/* message 4 - server ack *\/$/;"	e	enum:__anon1
+SERVER_INIT_RESPONSE	transfer.h	/^     SERVER_INIT_RESPONSE,   \/* message 2 - server response *\/ $/;"	e	enum:__anon1
+SERVER_USAGE	main.c	52;"	d	file:
+TAGSIZE	transfer.h	40;"	d
+TARGETS	Makefile	/^TARGETS=client \\$/;"	m
+TYP_DATA_SHARED	transfer.h	47;"	d
+USAGE	main.c	51;"	d	file:
+buffer_from_file	siis-util.c	/^unsigned int buffer_from_file(char *filepath, unsigned char **buf)$/;"	f
+client_secure_transfer	transfer.c	/^int client_secure_transfer( struct rm_cmd *r, char *fname, char *address ) $/;"	f
+cmd	transfer.h	/^	char cmd;$/;"	m	struct:rm_cmd
+connect_client	siis-network.c	/^int connect_client( char *address )$/;"	f
+decrypt	siis-ssl.c	/^int decrypt(unsigned char *ciphertext, int ciphertext_len, unsigned char *aad,$/;"	f
+decrypt_message	transfer.c	/^int decrypt_message( unsigned char *buffer, unsigned int len, unsigned char *key, $/;"	f
+digest_message	siis-ssl.c	/^void digest_message(const unsigned char *message, size_t message_len, unsigned char **digest, unsigned int *digest_len)$/;"	f
+encrypt	siis-ssl.c	/^int encrypt(unsigned char *plaintext, int plaintext_len, unsigned char *aad,$/;"	f
+encrypt_message	transfer.c	/^int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsigned char *key, $/;"	f
+errorMessage	siis-util.c	/^int errorMessage( char *msg ) $/;"	f
+fname	transfer.h	/^	char fname[0];$/;"	m	struct:rm_cmd
+generate_pseudorandom_bytes	transfer.c	/^int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)$/;"	f
+get_message	transfer.c	/^int get_message( int sock, ProtoMessageHdr *hdr, char *block )$/;"	f
+handleErrors	siis-ssl.c	/^void handleErrors(void)$/;"	f
+hmac_message	siis-ssl.c	/^int hmac_message(unsigned char* msg, size_t mlen, unsigned char** val, size_t* vlen, unsigned char *key)$/;"	f
+len	transfer.h	/^	unsigned short len;$/;"	m	struct:rm_cmd
+length	transfer.h	/^     unsigned int    length;   \/* message length *\/$/;"	m	struct:__anon2
+load_key	transfer.c	/^void load_key(const char *fname, unsigned char *key, unsigned int keysize) {$/;"	f
+main	main.c	/^int main( int argc, char **argv ) $/;"	f
+make_req_struct	transfer.c	/^int make_req_struct( struct rm_cmd **rptr, char *filename, char *cmd, char *type )$/;"	f
+msgtype	transfer.h	/^     unsigned int    msgtype;  \/* message type *\/$/;"	m	struct:__anon2
+printBuffer	siis-util.c	/^void printBuffer( char *msg, char *buf, int len )$/;"	f
+receive_file	transfer.c	/^int receive_file( int sock, unsigned char *key ) $/;"	f
+recv_data	siis-network.c	/^int recv_data( int sock, char *blk, int sz, int minsz )$/;"	f
+rm_cmd	transfer.h	/^struct rm_cmd {$/;"	s
+rsa_decrypt	siis-ssl.c	/^int rsa_decrypt(unsigned char *encMsg, unsigned int encMsgLen, unsigned char *ek, unsigned int ekl,$/;"	f
+rsa_encrypt	siis-ssl.c	/^int rsa_encrypt(unsigned char *msg, unsigned int msgLen, unsigned char **encMsg, unsigned char **ek,$/;"	f
+save_key	transfer.c	/^void save_key(const char *fname, unsigned char *key, unsigned int keysize) {$/;"	f
+send_data	siis-network.c	/^int send_data( int sock, char *blk, int len )$/;"	f
+send_message	transfer.c	/^int send_message( int sock, ProtoMessageHdr *hdr, char *block )$/;"	f
+server_accept	siis-network.c	/^int server_accept( int sock )$/;"	f
+server_connect	siis-network.c	/^int server_connect( void )$/;"	f
+server_secure_transfer	transfer.c	/^int server_secure_transfer(unsigned char *key)$/;"	f
+test_aes	transfer.c	/^int test_aes( )$/;"	f
+transfer_file	transfer.c	/^int transfer_file( struct rm_cmd *r, char *fname, int sock, $/;"	f
+type	transfer.h	/^	char type;$/;"	m	struct:rm_cmd
+wait_message	transfer.c	/^int wait_message( int sock, ProtoMessageHdr *hdr, $/;"	f
+warningMessage	siis-util.c	/^int warningMessage( char *msg ) $/;"	f

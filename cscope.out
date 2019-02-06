@@ -1,0 +1,4046 @@
+cscope 15 $HOME/CMPSC-447/hw3/trans -q 0000000292 0000021405
+	@main.c
+
+32 
+	~<°dio.h
+>
+
+33 
+	~<uni°d.h
+>
+
+34 
+	~<°dlib.h
+>
+
+35 
+	~<f˙é.h
+>
+
+36 
+	~<î∫o.h
+>
+
+37 
+	~<sys/ty≥s.h
+>
+
+38 
+	~<sys/°©.h
+>
+
+39 
+	~<sys/sockë.h
+>
+
+40 
+	~<√töë/ö.h
+>
+
+41 
+	~<¨∑/öë.h
+>
+
+42 
+	~<°rög.h
+>
+
+45 
+	~"siis-utû.h
+"
+
+46 
+	~"siis-√tw‹k.h
+"
+
+47 
+	~"å™s„r.h
+"
+
+51 
+	#USAGE
+ "USAGE: clõ¡ <fûíame> <£rvî IPáddªss> <comm™d> <fûe_ty≥>\n"
+
+	)
+
+52 
+	#SERVER_USAGE
+ "USAGE: sîvî gíkey/ªcvfûe\n"
+
+	)
+
+65 
+	$maö
+–
+¨gc
+, **
+¨gv
+ )
+
+68 #ifde‡
+SERVER
+
+
+70 
+key
+[
+KEYSIZE
+];
+
+73 i‡–
+¨gc
+ < 2 )
+
+76 
+	`îr‹Mesßge
+( "missing or bad commandÜineárguments\n" );
+
+77 
+	`¥ötf
+–
+SERVER_USAGE
+ );
+
+78 
+	`exô
+( -1 );
+
+81 i‡(
+	`°rcmp
+(
+¨gv
+[1],"genkey") == 0) {
+
+84 i‡(
+	`gíî©e_p£ud‹™dom_byãs
+(
+key
+, 
+KEYSIZE
+) != 0) {
+
+85 
+	`exô
+(-1);
+
+89 
+	`ßve_key
+("./íckey", 
+key
+, 
+KEYSIZE
+);
+
+94 i‡(
+	`°rcmp
+(
+¨gv
+[1],"recvfile") == 0) {
+
+97 
+	`£rvî_£cuª_å™s„r
+(
+key
+);
+
+102 
+	`îr‹Mesßge
+( "the secondárg must beÉither genkey orÑecvfile\n" );
+
+103 
+	`¥ötf
+–
+SERVER_USAGE
+ );
+
+104 
+	`exô
+( -1 );
+
+109 
+rm_cmd
+ *
+r
+;
+
+110 
+îr
+;
+
+113 i‡–
+¨gc
+ < 5 )
+
+116 
+	`îr‹Mesßge
+( "missing or bad commandÜineárguments\n" );
+
+117 
+	`¥ötf
+–
+USAGE
+ );
+
+118 
+	`exô
+( -1 );
+
+123 
+îr
+ = 
+	`make_ªq_°ru˘
+–&
+r
+, 
+¨gv
+[1],árgv[3],árgv[4] );
+
+124 i‡(
+îr
+) {
+
+125 
+	`îr‹Mesßge
+( "cannotÖrocessÑequestÜine into command\n" );
+
+126 
+	`¥ötf
+–
+USAGE
+ );
+
+127 
+	`exô
+( -1 );
+
+131 
+°©
+ 
+°
+;
+
+132 
+°©us
+ = 
+	`°©
+–
+¨gv
+[1], &
+°
+ ),
+
+133 
+ªadabÀ
+ = ( ((
+°
+.
+°_uid
+ =
+	`gëuid
+()Ë&& (°.
+°_mode
+&
+S_IRUSR
+)) ||
+
+134 (
+°
+.
+°_mode
+&
+S_IROTH
+) );
+
+135 i‡–(
+°©us
+ =-1Ë|| (!
+ªadabÀ
+) )
+
+138 
+msg
+[128];
+
+139 
+	`•rötf
+–
+msg
+, "n⁄-exi°™à‹ uƒóbÀ fûê[%.64s]\n", 
+¨gv
+[1] );
+
+140 
+	`îr‹Mesßge
+–
+msg
+ );
+
+141 
+	`¥ötf
+–
+USAGE
+ );
+
+142 
+	`exô
+( -1 );
+
+146 i‡–
+	`öë_addr
+(
+¨gv
+[2]Ë=
+INADDR_NONE
+ )
+
+149 
+msg
+[128];
+
+150 
+	`•rötf
+–
+msg
+, "bad sîvî IPáddªs†[%.64s]\n", 
+¨gv
+[2] );
+
+151 
+	`îr‹Mesßge
+–
+msg
+ );
+
+152 
+	`¥ötf
+–
+USAGE
+ );
+
+153 
+	`exô
+( -1 );
+
+158 
+	`¥ötf
+–"Tøns„∏begönög, fûê[%s]\n", 
+¨gv
+[1] );
+
+159  ( 
+	`˛õ¡_£cuª_å™s„r
+–
+r
+, 
+¨gv
+[1],árgv[2]) );
+
+162 
+	}
+}
+
+	@siis-network.c
+
+32 
+	~<î∫o.h
+>
+
+33 
+	~<°rög.h
+>
+
+34 
+	~<°dlib.h
+>
+
+35 
+	~<°dio.h
+>
+
+36 
+	~<√töë/ö.h
+>
+
+37 
+	~<¨∑/öë.h
+>
+
+38 
+	~<sys/ty≥s.h
+>
+
+39 
+	~<sys/sockë.h
+>
+
+42 
+	~"siis-utû.h
+"
+
+43 
+	~"siis-√tw‹k.h
+"
+
+56 
+	$c⁄√˘_˛õ¡
+–*
+addªss
+ )
+
+59 
+sock
+;
+
+60 
+sockaddr_ö
+ 
+öë
+;
+
+63 
+	`mem£t
+–&
+öë
+, 0x0, (inet) );
+
+64 
+öë
+.
+sö_Ámûy
+ = 
+AF_INET
+;
+
+65 
+öë
+.
+sö_p‹t
+ = 
+	`ht⁄s
+–
+PROTOCOL_PORT
+ );
+
+66 
+öë
+.
+sö_addr
+.
+s_addr
+ = 
+	`öë_addr
+–(*)
+addªss
+ );
+
+69 i‡–(
+sock
+ = 
+	`sockë
+(
+AF_INET
+, 
+SOCK_STREAM
+, 0)) == -1 )
+
+72 
+	`îr‹Mesßge
+( "failedÑead on data file.\n" );
+
+73 
+	`exô
+( -1 );
+
+77 i‡–
+	`c⁄√˘
+(
+sock
+, (
+sockaddr
+ *)&
+öë
+, (inet)) != 0 )
+
+80 
+msg
+[128];
+
+81 
+	`•rötf
+–
+msg
+, "failed client socket connection [%.64s]\n",
+
+82 
+	`°ªº‹
+(
+î∫o
+) );
+
+83 
+	`îr‹Mesßge
+–
+msg
+ );
+
+84 
+	`exô
+( -1 );
+
+88 
+	`¥ötf
+( "Client connectedÅoáddress [%s/%d], successful ...\n",
+
+89 
+addªss
+, 
+PROTOCOL_PORT
+ );
+
+92 –
+sock
+ );
+
+93 
+	}
+}
+
+104 
+	$£rvî_c⁄√˘
+( )
+
+107 
+sock
+;
+
+108 
+sockaddr_ö
+ 
+öë
+;
+
+111 
+	`mem£t
+–&
+öë
+, 0x0, (inet) );
+
+112 
+öë
+.
+sö_Ámûy
+ = 
+AF_INET
+;
+
+113 
+öë
+.
+sö_p‹t
+ = 
+	`ht⁄s
+–
+PROTOCOL_PORT
+ );
+
+114 
+öë
+.
+sö_addr
+.
+s_addr
+ = 
+INADDR_ANY
+;
+
+117 i‡–(
+sock
+ = 
+	`sockë
+–
+AF_INET
+, 
+SOCK_STREAM
+, 0)) == -1 )
+
+120 
+msg
+[128];
+
+121 
+	`•rötf
+–
+msg
+, "failed server socket create [%.64s]\n",
+
+122 
+	`°ªº‹
+(
+î∫o
+) );
+
+123 
+	`îr‹Mesßge
+–
+msg
+ );
+
+124 
+	`exô
+( -1 );
+
+128 
+⁄
+ = 1;
+
+129 
+	`£tsock›t
+–
+sock
+, 
+SOL_SOCKET
+, 
+SO_REUSEADDR
+, &
+⁄
+, (on));
+
+132 i‡–
+	`böd
+(
+sock
+, (
+sockaddr
+ *)&
+öë
+, (inet)) != 0 )
+
+135 
+msg
+[128];
+
+136 
+	`•rötf
+–
+msg
+, "failed server socket bind [%.64s]\n",
+
+137 
+	`°ªº‹
+(
+î∫o
+) );
+
+138 
+	`îr‹Mesßge
+–
+msg
+ );
+
+139 
+	`exô
+( -1 );
+
+143 i‡–
+	`li°í
+(
+sock
+, 5) != 0 )
+
+146 
+msg
+[128];
+
+147 
+	`•rötf
+–
+msg
+, "failed server socketÜisten [%.64s]\n",
+
+148 
+	`°ªº‹
+(
+î∫o
+) );
+
+149 
+	`îr‹Mesßge
+–
+msg
+ );
+
+150 
+	`exô
+( -1 );
+
+154 
+	`¥ötf
+( "Server bindingÅoÖort [%d], successful ...\n",
+
+155 
+PROTOCOL_PORT
+ );
+
+158 –
+sock
+ );
+
+159 
+	}
+}
+
+170 
+	$£rvî_ac˚±
+–
+sock
+ )
+
+172 
+sockaddr_ö
+ 
+öë
+;
+
+173 
+öë_Àn
+ = (
+öë
+), 
+nsock
+;
+
+176 i‡–(
+nsock
+ = 
+	`ac˚±
+(
+sock
+, (
+sockaddr
+ *)&
+öë
+, &
+öë_Àn
+)) == 0 )
+
+179 
+msg
+[128];
+
+180 
+	`•rötf
+–
+msg
+, "failed server socketáccept [%.64s]\n",
+
+181 
+	`°ªº‹
+(
+î∫o
+) );
+
+182 
+	`îr‹Mesßge
+–
+msg
+ );
+
+183 
+	`exô
+( -1 );
+
+187 –
+nsock
+ );
+
+188 
+	}
+}
+
+202 
+	$ªcv_d©a
+–
+sock
+, *
+blk
+, 
+sz
+, 
+mösz
+ )
+
+205 
+rb
+ = 0, 
+ªt
+;
+
+209 i‡–(
+ªt
+=
+	`ªcv
+(
+sock
+, &
+blk
+[
+rb
+], 
+sz
+-rb, 0)) == -1 )
+
+212 
+msg
+[128];
+
+213 
+	`•rötf
+–
+msg
+, "failedÑeadÉrror [%.64s]\n",
+
+214 
+	`°ªº‹
+(
+î∫o
+) );
+
+215 
+	`îr‹Mesßge
+–
+msg
+ );
+
+216 
+	`exô
+( -1 );
+
+220 
+rb
+ +
+ªt
+;
+
+222  
+rb
+ < 
+mösz
+ );
+
+227 
+	}
+}
+
+240 
+	$£nd_d©a
+–
+sock
+, *
+blk
+, 
+Àn
+ )
+
+243 i‡–
+	`£nd
+(
+sock
+, 
+blk
+, 
+Àn
+, 0) !=Üen )
+
+246 
+	`îr‹Mesßge
+( "failed socket send [short send]\n" );
+
+247 
+	`exô
+( -1 );
+
+253 
+	}
+}
+
+	@siis-network.h
+
+34 
+	#PROTOCOL_PORT
+ 9165
+
+	)
+
+36 #i‡
+deföed
+(
+sun
+)
+
+37 
+	#INADDR_NONE
+ ((
+ö_addr_t
+Ë0xffffffff)
+
+	)
+
+50 
+c⁄√˘_˛õ¡
+–*
+addr
+ );
+
+60 
+£rvî_c⁄√˘
+( );
+
+70 
+£rvî_ac˚±
+–
+sock
+ );
+
+83 
+ªcv_d©a
+–
+sock
+, *
+blk
+, 
+sz
+, 
+mösz
+ );
+
+95 
+£nd_d©a
+–
+sock
+, *
+blk
+, 
+Àn
+ );
+
+	@siis-ssl.c
+
+33 
+	~<°dio.h
+>
+
+34 
+	~<°dlib.h
+>
+
+35 
+	~<°rög.h
+>
+
+36 
+	~<›ís¶/c⁄f.h
+>
+
+37 
+	~<›ís¶/evp.h
+>
+
+38 
+	~<›ís¶/rß.h
+>
+
+39 
+	~<›ís¶/îr.h
+>
+
+40 
+	~<›ís¶/hmac.h
+>
+
+41 
+	~<sys/ty≥s.h
+>
+
+42 
+	~<as£π.h
+>
+
+43 
+	~<uni°d.h
+>
+
+45 
+	~"siis-s¶.h
+"
+
+48 
+	$í¸y±
+(*
+∂aöãxt
+, 
+∂aöãxt_Àn
+, *
+Ød
+,
+
+49 
+Ød_Àn
+, *
+key
+, *
+iv
+,
+
+50 *
+cùhîãxt
+, *
+èg
+)
+
+52 
+EVP_CIPHER_CTX
+ *
+˘x
+;
+
+53 
+Àn
+;
+
+54 
+cùhîãxt_Àn
+;
+
+58 if(!(
+˘x
+ = 
+	`EVP_CIPHER_CTX_√w
+())Ë
+	`h™dÀEº‹s
+();
+
+61 if(1 !
+	`EVP_En¸y±Inô_ex
+(
+˘x
+, 
+	`EVP_´s_256_gcm
+(), 
+NULL
+, NULL, NULL))
+
+62 
+	`h™dÀEº‹s
+();
+
+65 if(1 !
+	`EVP_CIPHER_CTX_˘æ
+(
+˘x
+, 
+EVP_CTRL_GCM_SET_IVLEN
+, 16, 
+NULL
+))
+
+66 
+	`h™dÀEº‹s
+();
+
+69 if(1 !
+	`EVP_En¸y±Inô_ex
+(
+˘x
+, 
+NULL
+, NULL, 
+key
+, 
+iv
+)Ë
+	`h™dÀEº‹s
+();
+
+82 if(1 !
+	`EVP_En¸y±Upd©e
+(
+˘x
+, 
+cùhîãxt
+, &
+Àn
+, 
+∂aöãxt
+, 
+∂aöãxt_Àn
+))
+
+83 
+	`h™dÀEº‹s
+();
+
+84 
+cùhîãxt_Àn
+ = 
+Àn
+;
+
+89 if(1 !
+	`EVP_En¸y±FöÆ_ex
+(
+˘x
+, 
+cùhîãxt
+ + 
+Àn
+, &Àn)Ë
+	`h™dÀEº‹s
+();
+
+90 
+cùhîãxt_Àn
+ +
+Àn
+;
+
+93 if(1 !
+	`EVP_CIPHER_CTX_˘æ
+(
+˘x
+, 
+EVP_CTRL_GCM_GET_TAG
+, 16, 
+èg
+))
+
+94 
+	`h™dÀEº‹s
+();
+
+97 
+	`EVP_CIPHER_CTX_‰ì
+(
+˘x
+);
+
+99  
+cùhîãxt_Àn
+;
+
+100 
+	}
+}
+
+103 
+	$de¸y±
+(*
+cùhîãxt
+, 
+cùhîãxt_Àn
+, *
+Ød
+,
+
+104 
+Ød_Àn
+, *
+èg
+, *
+key
+, *
+iv
+,
+
+105 *
+∂aöãxt
+)
+
+107 
+EVP_CIPHER_CTX
+ *
+˘x
+;
+
+108 
+Àn
+;
+
+109 
+∂aöãxt_Àn
+;
+
+110 
+ªt
+;
+
+113 if(!(
+˘x
+ = 
+	`EVP_CIPHER_CTX_√w
+())Ë
+	`h™dÀEº‹s
+();
+
+116 if(!
+	`EVP_De¸y±Inô_ex
+(
+˘x
+, 
+	`EVP_´s_256_gcm
+(), 
+NULL
+, NULL, NULL))
+
+117 
+	`h™dÀEº‹s
+();
+
+120 if(!
+	`EVP_CIPHER_CTX_˘æ
+(
+˘x
+, 
+EVP_CTRL_GCM_SET_IVLEN
+, 16, 
+NULL
+))
+
+121 
+	`h™dÀEº‹s
+();
+
+124 if(!
+	`EVP_De¸y±Inô_ex
+(
+˘x
+, 
+NULL
+, NULL, 
+key
+, 
+iv
+)Ë
+	`h™dÀEº‹s
+();
+
+137 if(!
+	`EVP_De¸y±Upd©e
+(
+˘x
+, 
+∂aöãxt
+, &
+Àn
+, 
+cùhîãxt
+, 
+cùhîãxt_Àn
+))
+
+138 
+	`h™dÀEº‹s
+();
+
+139 
+∂aöãxt_Àn
+ = 
+Àn
+;
+
+142 if(!
+	`EVP_CIPHER_CTX_˘æ
+(
+˘x
+, 
+EVP_CTRL_GCM_SET_TAG
+, 16, 
+èg
+))
+
+143 
+	`h™dÀEº‹s
+();
+
+148 
+ªt
+ = 
+	`EVP_De¸y±FöÆ_ex
+(
+˘x
+, 
+∂aöãxt
+ + 
+Àn
+, &len);
+
+151 
+	`EVP_CIPHER_CTX_‰ì
+(
+˘x
+);
+
+153 if(
+ªt
+ > 0)
+
+156 
+∂aöãxt_Àn
+ +
+Àn
+;
+
+157  
+∂aöãxt_Àn
+;
+
+164 
+	}
+}
+
+168 
+	$dige°_mesßge
+(c⁄° *
+mesßge
+, 
+size_t
+ 
+mesßge_Àn
+, **
+dige°
+, *
+dige°_Àn
+)
+
+170 
+EVP_MD_CTX
+ *
+md˘x
+;
+
+172 if((
+md˘x
+ = 
+	`EVP_MD_CTX_¸óã
+()Ë=
+NULL
+)
+
+173 
+	`h™dÀEº‹s
+();
+
+175 if(1 !
+	`EVP_Dige°Inô_ex
+(
+md˘x
+, 
+	`EVP_sha256
+(), 
+NULL
+))
+
+176 
+	`h™dÀEº‹s
+();
+
+178 if(1 !
+	`EVP_Dige°Upd©e
+(
+md˘x
+, 
+mesßge
+, 
+mesßge_Àn
+))
+
+179 
+	`h™dÀEº‹s
+();
+
+181 if((*
+dige°
+ = (*)
+	`OPENSSL_mÆloc
+(
+	`EVP_MD_size
+(
+	`EVP_sha256
+()))Ë=
+NULL
+)
+
+182 
+	`h™dÀEº‹s
+();
+
+184 if(1 !
+	`EVP_Dige°FöÆ_ex
+(
+md˘x
+, *
+dige°
+, 
+dige°_Àn
+))
+
+185 
+	`h™dÀEº‹s
+();
+
+187 
+	`EVP_MD_CTX_de°roy
+(
+md˘x
+);
+
+188 
+	}
+}
+
+192 
+	$hmac_mesßge
+(* 
+msg
+, 
+size_t
+ 
+mÀn
+, ** 
+vÆ
+, size_t* 
+vÀn
+, *
+key
+)
+
+194 
+HMAC_CTX
+ 
+˘x
+;
+
+195 c⁄° 
+EVP_MD
+* 
+md
+ = 
+NULL
+;
+
+197 
+	`O≥nSSL_add_Æl_dige°s
+();
+
+199 
+md
+ = 
+	`EVP_gë_dige°by«me
+("SHA256");
+
+200 
+	`HMAC_CTX_öô
+–&
+˘x
+ );
+
+202 if(!
+	`HMAC_Inô_ex
+(&
+˘x
+, 
+key
+, (key), 
+md
+, 
+NULL
+))
+
+203 
+	`h™dÀEº‹s
+();
+
+205 if(!
+	`HMAC_Upd©e
+(&
+˘x
+, 
+msg
+, 
+mÀn
+))
+
+206 
+	`h™dÀEº‹s
+();
+
+208 if(!
+	`HMAC_FöÆ
+(&
+˘x
+, *
+vÆ
+, (*)
+vÀn
+))
+
+209 
+	`h™dÀEº‹s
+();
+
+211 
+	`HMAC_CTX_˛ónup
+(&
+˘x
+);
+
+214 
+i
+;
+
+216 
+	`¥ötf
+("HMAC is: ");
+
+217 
+i
+ = 0; i < *
+vÀn
+; i++)
+
+218 
+	`¥ötf
+("%02x", (*
+vÆ
+)[
+i
+]);
+
+219 
+	`¥ötf
+("\n");
+
+223 
+	}
+}
+
+226 
+	$rß_í¸y±
+(*
+msg
+, 
+msgLí
+, **
+ícMsg
+, **
+ek
+,
+
+227 *
+ekl
+, **
+iv
+, *
+ivl
+, 
+EVP_PKEY
+ *
+pubkey
+)
+
+229 
+ícMsgLí
+ = 0;
+
+230 
+blockLí
+ = 0;
+
+231 
+EVP_CIPHER_CTX
+ *
+rßEn¸y±Ctx
+;
+
+233 *
+ivl
+ = 
+EVP_MAX_IV_LENGTH
+;
+
+234 *
+ekl
+ = 
+	`EVP_PKEY_size
+(
+pubkey
+);
+
+235 *
+ek
+ = (*)
+	`mÆloc
+(*
+ekl
+);
+
+236 *
+iv
+ = (*)
+	`mÆloc
+(*
+ivl
+);
+
+237 if(*
+ek
+ =
+NULL
+ || *
+iv
+ == NULL)  -1;
+
+238 
+	`mem£t
+–*
+iv
+, 0, *
+ivl
+ );
+
+240 *
+ícMsg
+ = (*)
+	`mÆloc
+(
+msgLí
+ + *
+ivl
+);
+
+241 if(
+ícMsg
+ =
+NULL
+)  -1;
+
+243 if(!(
+rßEn¸y±Ctx
+ = 
+	`EVP_CIPHER_CTX_√w
+())Ë
+	`h™dÀEº‹s
+();
+
+245 if(!
+	`EVP_SólInô
+(
+rßEn¸y±Ctx
+, 
+	`EVP_´s_256_cbc
+(), 
+ek
+, (*)
+ekl
+, *
+iv
+, &
+pubkey
+, 1)) {
+
+246 
+	`h™dÀEº‹s
+();
+
+249 if(!
+	`EVP_SólUpd©e
+(
+rßEn¸y±Ctx
+, *
+ícMsg
+ + 
+ícMsgLí
+, (*)&
+blockLí
+, 
+msg
+, 
+msgLí
+)) {
+
+250 
+	`h™dÀEº‹s
+();
+
+252 
+ícMsgLí
+ +
+blockLí
+;
+
+254 if(!
+	`EVP_SólFöÆ
+(
+rßEn¸y±Ctx
+, *
+ícMsg
+ + 
+ícMsgLí
+, (*)&
+blockLí
+)) {
+
+255 
+	`h™dÀEº‹s
+();
+
+257 
+ícMsgLí
+ +
+blockLí
+;
+
+259 
+	`EVP_CIPHER_CTX_˛ónup
+(
+rßEn¸y±Ctx
+);
+
+261  ()
+ícMsgLí
+;
+
+262 
+	}
+}
+
+265 
+	$rß_de¸y±
+(*
+ícMsg
+, 
+ícMsgLí
+, *
+ek
+, 
+ekl
+,
+
+266 *
+iv
+, 
+ivl
+, **
+decMsg
+, 
+EVP_PKEY
+ *
+¥ivkey
+)
+
+268 
+decLí
+ = 0;
+
+269 
+blockLí
+ = 0;
+
+270 
+EVP_CIPHER_CTX
+ *
+rßDe¸y±Ctx
+;
+
+272 *
+decMsg
+ = (*)
+	`mÆloc
+(
+ícMsgLí
+ + 
+ivl
+);
+
+273 if(
+decMsg
+ =
+NULL
+)  -1;
+
+275 if(!(
+rßDe¸y±Ctx
+ = 
+	`EVP_CIPHER_CTX_√w
+())Ë
+	`h™dÀEº‹s
+();
+
+277 if(!
+	`EVP_O≥nInô
+(
+rßDe¸y±Ctx
+, 
+	`EVP_´s_256_cbc
+(), 
+ek
+, 
+ekl
+, 
+iv
+, 
+¥ivkey
+)) {
+
+278 
+	`h™dÀEº‹s
+();
+
+281 if(!
+	`EVP_O≥nUpd©e
+(
+rßDe¸y±Ctx
+, (*)*
+decMsg
+ + 
+decLí
+, (*)&
+blockLí
+, 
+ícMsg
+, ()
+ícMsgLí
+)) {
+
+282 
+	`h™dÀEº‹s
+();
+
+284 
+decLí
+ +
+blockLí
+;
+
+286 if(!
+	`EVP_O≥nFöÆ
+(
+rßDe¸y±Ctx
+, (*)*
+decMsg
+ + 
+decLí
+, (*)&
+blockLí
+)) {
+
+287 
+	`h™dÀEº‹s
+();
+
+289 
+decLí
+ +
+blockLí
+;
+
+291 
+	`EVP_CIPHER_CTX_˛ónup
+(
+rßDe¸y±Ctx
+);
+
+293  ()
+decLí
+;
+
+294 
+	}
+}
+
+298 
+	$h™dÀEº‹s
+()
+
+300 
+	`ERR_¥öt_îr‹s_Â
+(
+°dîr
+);
+
+301 
+	`ab‹t
+();
+
+302 
+	}
+}
+
+	@siis-ssl.h
+
+35 
+í¸y±
+(*
+∂aöãxt
+, 
+∂aöãxt_Àn
+, *
+Ød
+,
+
+36 
+Ød_Àn
+, *
+key
+, *
+iv
+,
+
+37 *
+cùhîãxt
+, *
+èg
+);
+
+38 
+de¸y±
+(*
+cùhîãxt
+, 
+cùhîãxt_Àn
+, *
+Ød
+,
+
+39 
+Ød_Àn
+, *
+èg
+, *
+key
+, *
+iv
+,
+
+40 *
+∂aöãxt
+);
+
+41 
+dige°_mesßge
+(c⁄° *
+mesßge
+, 
+size_t
+ 
+mesßge_Àn
+,
+
+42 **
+dige°
+, *
+dige°_Àn
+);
+
+43 
+hmac_mesßge
+(* 
+msg
+, 
+size_t
+ 
+mÀn
+, ** 
+vÆ
+, size_t* 
+vÀn
+,
+
+44 *
+key
+);
+
+45 
+rß_í¸y±
+(*
+msg
+, 
+msgLí
+, **
+ícMsg
+, **
+ek
+,
+
+46 *
+ekl
+, **
+iv
+, *
+ivl
+, 
+EVP_PKEY
+ *
+pubkey
+);
+
+47 
+rß_de¸y±
+(*
+ícMsg
+, 
+ícMsgLí
+, *
+ek
+, 
+ekl
+,
+
+48 *
+iv
+, 
+ivl
+, **
+decMsg
+, 
+EVP_PKEY
+ *
+¥ivkey
+);
+
+49 
+ENGINE
+ *
+ígöe_öô
+( );
+
+50 
+ígöe_˛ónup
+–
+ENGINE
+ *
+íg
+ );
+
+51 
+¸y±o_öô
+( );
+
+52 
+¸y±o_˛ónup
+( );
+
+53 
+h™dÀEº‹s
+();
+
+	@siis-util.c
+
+33 
+	~<°dio.h
+>
+
+34 
+	~<°rögs.h
+>
+
+35 
+	~<°dlib.h
+>
+
+36 
+	~<as£π.h
+>
+
+37 
+	~<sys/ty≥s.h
+>
+
+38 
+	~<sys/°©.h
+>
+
+39 
+	~<uni°d.h
+>
+
+41 
+	~"siis-utû.h
+"
+
+54 
+	$îr‹Mesßge
+–*
+msg
+ )
+
+57 
+	`Ârötf
+–
+°dîr
+, "Eº‹: %s\n", 
+msg
+ );
+
+59 
+	}
+}
+
+70 
+	$w¨nögMesßge
+–*
+msg
+ )
+
+73 
+	`Ârötf
+–
+°dîr
+, "W¨nög: %s\n", 
+msg
+ );
+
+75 
+	}
+}
+
+89 
+	$¥ötBuf„r
+–*
+msg
+, *
+buf
+, 
+Àn
+ )
+
+92 
+i
+;
+
+93 i‡–
+msg
+ !
+NULL
+ ) 
+	`¥ötf
+( "%s : ", msg );
+
+94 i‡–
+buf
+ !
+NULL
+ )
+
+96  
+i
+=0; i<
+Àn
+; i++ )
+
+98 
+	`¥ötf
+–"%2X ", ()
+buf
+[
+i
+] );
+
+103 
+	`¥ötf
+( "(null)" );
+
+105 
+	`¥ötf
+( "\n" );
+
+107 
+	}
+}
+
+121 
+	$buf„r_‰om_fûe
+(*
+fûï©h
+, **
+buf
+)
+
+123 
+îr
+;
+
+124 
+°©
+ *
+°©buf
+;
+
+125 
+FILE
+ *
+Âå
+;
+
+126 
+size_t
+ 
+fûesize
+;
+
+128 
+°©buf
+ = (
+°©
+ *)
+	`mÆloc
+((stat));
+
+129 
+	`as£π
+–
+°©buf
+ !
+NULL
+ );
+
+131 
+îr
+ = 
+	`°©
+–
+fûï©h
+, 
+°©buf
+ );
+
+134 i‡–
+îr
+ != 0 ) {
+
+135 
+fûesize
+ = 0;
+
+138 i‡(!–
+fûesize
+ = 
+°©buf
+->
+°_size
+ ));
+
+142 
+	`as£π
+–
+fûesize
+ > 0 );
+
+145 *
+buf
+ = (*)
+	`mÆloc
+(
+fûesize
+);
+
+146 
+	`as£π
+–*
+buf
+ !
+NULL
+ );
+
+148 
+Âå
+ = 
+	`f›í
+–
+fûï©h
+, "r" );
+
+149 i‡–
+Âå
+ !
+NULL
+ ) {
+
+150 
+îr
+ = 
+	`‰ód
+–*
+buf
+, 1, 
+fûesize
+, 
+Âå
+ );
+
+151 
+	`as£π
+–
+îr
+ =
+fûesize
+ );
+
+153 
+	`f˛o£
+–
+Âå
+ );
+
+156 
+	`‰ì
+–
+°©buf
+ );
+
+158  
+fûesize
+;
+
+159 
+	}
+}
+
+	@siis-util.h
+
+45 
+îr‹Mesßge
+–*
+msg
+ );
+
+55 
+w¨nögMesßge
+–*
+msg
+ );
+
+67 
+¥ötBuf„r
+–*
+msg
+, *
+buf
+, 
+Àn
+ );
+
+78 
+buf„r_‰om_fûe
+(*
+fûï©h
+, **
+buf
+);
+
+	@transfer.c
+
+35 
+	~<°dio.h
+>
+
+36 
+	~<f˙é.h
+>
+
+37 
+	~<°dlib.h
+>
+
+38 
+	~<î∫o.h
+>
+
+39 
+	~<as£π.h
+>
+
+40 
+	~<uni°d.h
+>
+
+41 
+	~<°rög.h
+>
+
+42 
+	~<sys/£À˘.h
+>
+
+43 
+	~<sys/ty≥s.h
+>
+
+44 
+	~<√töë/ö.h
+>
+
+45 
+	~<öây≥s.h
+>
+
+48 
+	~<›ís¶/c⁄f.h
+>
+
+49 
+	~<›ís¶/evp.h
+>
+
+50 
+	~<›ís¶/≥m.h
+>
+
+51 
+	~<›ís¶/ønd.h
+>
+
+52 
+	~<›ís¶/îr.h
+>
+
+53 
+	~<›ís¶/bn.h
+>
+
+54 
+	~<›ís¶/rß.h
+>
+
+57 
+	~"siis-utû.h
+"
+
+58 
+	~"siis-√tw‹k.h
+"
+
+59 
+	~"siis-s¶.h
+"
+
+60 
+	~"å™s„r.h
+"
+
+77 
+	$make_ªq_°ru˘
+–
+rm_cmd
+ **
+Ωå
+, *
+fûíame
+, *
+cmd
+, *
+ty≥
+ )
+
+79 
+rm_cmd
+ *
+r
+;
+
+80 
+rsize
+;
+
+81 
+Àn
+;
+
+83 
+	`as£π
+(
+Ωå
+ != 0);
+
+84 
+	`as£π
+(
+fûíame
+ != 0);
+
+85 
+Àn
+ = 
+	`°æí
+–
+fûíame
+ );
+
+87 
+rsize
+ = (
+rm_cmd
+Ë+ 
+Àn
+;
+
+88 *
+Ωå
+ = 
+r
+ = (
+rm_cmd
+ *Ë
+	`mÆloc
+–
+rsize
+ );
+
+89 
+	`mem£t
+–
+r
+, 0, 
+rsize
+ );
+
+91 
+r
+->
+Àn
+ =Üen;
+
+92 
+	`mem˝y
+–
+r
+->
+‚ame
+, 
+fûíame
+,Ñ->
+Àn
+ );
+
+93 
+r
+->
+cmd
+ = 
+	`©oi
+( cmd );
+
+94 
+r
+->
+ty≥
+ = 
+	`©oi
+(Åype );
+
+97 
+	}
+}
+
+111 
+	$gë_mesßge
+–
+sock
+, 
+PrŸoMesßgeHdr
+ *
+hdr
+, *
+block
+ )
+
+114 
+	`ªcv_d©a
+–
+sock
+, (*)
+hdr
+, (
+PrŸoMesßgeHdr
+),
+
+115 (
+PrŸoMesßgeHdr
+) );
+
+116 
+hdr
+->
+Àngth
+ = 
+	`¡ohs
+(hdr->length);
+
+117 
+	`as£π
+–
+hdr
+->
+Àngth
+<
+MAX_BLOCK_SIZE
+ );
+
+118 
+hdr
+->
+msgty≥
+ = 
+	`¡ohs
+( hdr->msgtype );
+
+119 i‡–
+hdr
+->
+Àngth
+ > 0 )
+
+120 –
+	`ªcv_d©a
+–
+sock
+, 
+block
+, 
+hdr
+->
+Àngth
+, hdr->length ) );
+
+122 
+	}
+}
+
+136 
+	$waô_mesßge
+–
+sock
+, 
+PrŸoMesßgeHdr
+ *
+hdr
+,
+
+137 *
+block
+, 
+PrŸoMesßgeTy≥
+ 
+mt
+ )
+
+140 
+ªt
+ = 
+	`gë_mesßge
+–
+sock
+, 
+hdr
+, 
+block
+ );
+
+141 i‡–
+hdr
+->
+msgty≥
+ !
+mt
+ )
+
+144 
+msg
+[128];
+
+145 
+	`•rötf
+–
+msg
+, "Server unableÅoÖrocess messageÅype [%d != %d]\n",
+
+146 
+hdr
+->
+msgty≥
+, 
+mt
+ );
+
+147 
+	`îr‹Mesßge
+–
+msg
+ );
+
+148 
+	`exô
+( -1 );
+
+152 –
+ªt
+ );
+
+153 
+	}
+}
+
+166 
+	$£nd_mesßge
+–
+sock
+, 
+PrŸoMesßgeHdr
+ *
+hdr
+, *
+block
+ )
+
+168 
+ªÆ_Àn
+ = 0;
+
+171 
+ªÆ_Àn
+ = 
+hdr
+->
+Àngth
+;
+
+172 
+hdr
+->
+msgty≥
+ = 
+	`ht⁄s
+( hdr->msgtype );
+
+173 
+hdr
+->
+Àngth
+ = 
+	`ht⁄s
+( hdr->length );
+
+174 i‡–
+block
+ =
+NULL
+ )
+
+175 –
+	`£nd_d©a
+–
+sock
+, (*)
+hdr
+, (hdr) ) );
+
+177 –
+	`£nd_d©a
+(
+sock
+, (*)
+hdr
+, (hdr)) ||
+
+178 
+	`£nd_d©a
+(
+sock
+, 
+block
+, 
+ªÆ_Àn
+) );
+
+179 
+	}
+}
+
+196 
+	$í¸y±_mesßge
+–*
+∂aöãxt
+, 
+∂aöãxt_Àn
+, *
+key
+,
+
+197 *
+buf„r
+, *
+Àn
+ )
+
+206 
+	}
+}
+
+224 
+	$de¸y±_mesßge
+–*
+buf„r
+, 
+Àn
+, *
+key
+,
+
+225 *
+∂aöãxt
+, *
+∂aöãxt_Àn
+ )
+
+230 
+	}
+}
+
+242 
+	$gíî©e_p£ud‹™dom_byãs
+(*
+buf„r
+, 
+size
+)
+
+247 
+	}
+}
+
+261 
+	$ßve_key
+(c⁄° *
+‚ame
+, *
+key
+, 
+keysize
+) {
+
+264 
+	}
+}
+
+278 
+	$lﬂd_key
+(c⁄° *
+‚ame
+, *
+key
+, 
+keysize
+) {
+
+281 
+	}
+}
+
+304 
+	$å™s„r_fûe
+–
+rm_cmd
+ *
+r
+, *
+‚ame
+, 
+sock
+,
+
+305 *
+key
+ )
+
+308 
+ªadByãs
+ = 1, 
+tŸÆByãs
+ = 0, 
+fh
+;
+
+309 
+PrŸoMesßgeHdr
+ 
+hdr
+;
+
+310 
+block
+[
+MAX_BLOCK_SIZE
+];
+
+313 i‡–(
+fh
+=
+	`›í
+(
+‚ame
+, 
+O_RDONLY
+, 0)) == -1 )
+
+316 
+msg
+[128];
+
+317 
+	`•rötf
+–
+msg
+, "Áûuª o≥nög fûê[%.64s]\n", 
+‚ame
+ );
+
+318 
+	`îr‹Mesßge
+–
+msg
+ );
+
+319 
+	`exô
+( -1 );
+
+323 
+hdr
+.
+msgty≥
+ = 
+FILE_XFER_INIT
+;
+
+324 
+hdr
+.
+Àngth
+ = (
+rm_cmd
+Ë+ 
+r
+->
+Àn
+;
+
+325 
+	`£nd_mesßge
+–
+sock
+, &
+hdr
+, (*)
+r
+ );
+
+328  (
+r
+->
+cmd
+ =
+CMD_CREATE
+Ë&& (
+ªadByãs
+ != 0) )
+
+331 i‡–(
+ªadByãs
+=
+	`ªad
+–
+fh
+, 
+block
+, 
+BLOCKSIZE
+ )) == -1 )
+
+334 
+	`îr‹Mesßge
+( "failedÑead on data file.\n" );
+
+335 
+	`exô
+( -1 );
+
+339 
+tŸÆByãs
+ +
+ªadByãs
+;
+
+340 
+	`¥ötf
+–"Ródög %10d byã†...\n", 
+tŸÆByãs
+ );
+
+343 i‡–
+ªadByãs
+ > 0 )
+
+345 #ifde‡
+DEBUG
+
+
+346 
+	`¥ötf
+("Block is:\n");
+
+347 
+	`BIO_dump_Â
+ (
+°dout
+, (c⁄° *)
+block
+, 
+ªadByãs
+);
+
+357 
+hdr
+.
+msgty≥
+ = 
+EXIT
+;
+
+358 
+hdr
+.
+Àngth
+ = 0;
+
+359 
+	`£nd_mesßge
+–
+sock
+, &
+hdr
+, 
+NULL
+ );
+
+360 
+	`waô_mesßge
+–
+sock
+, &
+hdr
+, 
+block
+, 
+EXIT
+ );
+
+363 
+	`˛o£
+–
+fh
+ );
+
+365 
+	}
+}
+
+379 
+	$˛õ¡_£cuª_å™s„r
+–
+rm_cmd
+ *
+r
+, *
+‚ame
+, *
+addªss
+ )
+
+382 
+key
+[
+KEYSIZE
+];
+
+383 
+sock
+;
+
+386 
+	`lﬂd_key
+("./íckey", 
+key
+, 
+KEYSIZE
+);
+
+388 
+sock
+ = 
+	`c⁄√˘_˛õ¡
+–
+addªss
+ );
+
+390 
+	`å™s„r_fûe
+–
+r
+, 
+‚ame
+, 
+sock
+, 
+key
+ );
+
+392 
+	`˛o£
+–
+sock
+ );
+
+396 
+	}
+}
+
+413 
+	$ã°_´s
+( )
+
+415 
+rc
+ = 0;
+
+416 *
+key
+;
+
+417 *
+cùhîãxt
+, *
+èg
+;
+
+418 *
+∂aöãxt
+;
+
+419 *
+iv
+ = (*)"0123456789012345";
+
+420 
+˛í
+ = 0, 
+∂í
+ = 0;
+
+421 
+msg
+[] = "Help me, Mr. Wizard!";
+
+422 
+∂aöãxt_Àn
+ = 
+	`°æí
+(
+msg
+);
+
+424 
+	`¥ötf
+("*** Test AESÉncryptánd decrypt. ***\n");
+
+427 
+key
+(*)
+	`mÆloc
+–
+KEYSIZE
+ );
+
+429 
+	`mem˝y
+–
+key
+, "ABCDEFGH_IJKLMNOabcdefgh_ijklmno", 
+KEYSIZE
+ );
+
+430 
+	`as£π
+–
+rc
+ == 0 );
+
+433 
+cùhîãxt
+ = (*)
+	`mÆloc
+–
+∂aöãxt_Àn
+ );
+
+434 
+èg
+ = (*)
+	`mÆloc
+–
+TAGSIZE
+ );
+
+435 
+˛í
+ = 
+	`í¸y±
+–(*Ë
+msg
+, 
+∂aöãxt_Àn
+, (*)
+NULL
+, 0, 
+key
+, 
+iv
+, 
+cùhîãxt
+, 
+èg
+);
+
+436 
+	`as£π
+(–
+˛í
+ > 0 ) && ( cÀ¿<
+∂aöãxt_Àn
+ ));
+
+438 
+	`¥ötf
+("Ciphertext is:\n");
+
+439 
+	`BIO_dump_Â
+ (
+°dout
+, (c⁄° *)
+cùhîãxt
+, 
+˛í
+);
+
+441 
+	`¥ötf
+("Tag is:\n");
+
+442 
+	`BIO_dump_Â
+ (
+°dout
+, (c⁄° *)
+èg
+, 
+TAGSIZE
+);
+
+445 
+∂aöãxt
+ = (*)
+	`mÆloc
+–
+˛í
++
+TAGSIZE
+ );
+
+446 
+	`mem£t
+–
+∂aöãxt
+, 0, 
+˛í
++
+TAGSIZE
+ );
+
+447 
+∂í
+ = 
+	`de¸y±
+–
+cùhîãxt
+, 
+˛í
+, (*Ë
+NULL
+, 0,
+
+448 
+èg
+, 
+key
+, 
+iv
+, 
+∂aöãxt
+ );
+
+449 
+	`as£π
+–
+∂í
+ > 0 );
+
+453 
+	`¥ötf
+("DecryptedÅext is: \n");
+
+454 
+	`BIO_dump_Â
+ (
+°dout
+, (c⁄° *)
+∂aöãxt
+, ()
+∂í
+);
+
+457 
+	`¥ötf
+("Msg: %s\n", 
+∂aöãxt
+ );
+
+460 
+	}
+}
+
+472 
+	#FILE_PREFIX
+ "./sh¨ed/"
+
+	)
+
+474 
+	$ª˚ive_fûe
+–
+sock
+, *
+key
+ )
+
+477 
+tŸÆByãs
+ = 0;
+
+478 
+d⁄e
+ = 0, 
+fh
+ = 0;
+
+479 
+outbyãs
+;
+
+480 
+PrŸoMesßgeHdr
+ 
+hdr
+;
+
+481 
+rm_cmd
+ *
+r
+ = 
+NULL
+;
+
+482 
+block
+[
+MAX_BLOCK_SIZE
+];
+
+483 
+∂aöãxt
+[
+MAX_BLOCK_SIZE
++
+TAGSIZE
+];
+
+484 *
+‚ame
+ = 
+NULL
+;
+
+485 
+rc
+ = 0;
+
+488 
+	`bzîo
+(
+block
+, 
+MAX_BLOCK_SIZE
+);
+
+491 
+	`waô_mesßge
+–
+sock
+, &
+hdr
+, 
+block
+, 
+FILE_XFER_INIT
+ );
+
+494 
+rm_cmd
+ *
+tmp
+ = (rm_cmd *)
+block
+;
+
+495 
+Àn
+ = 
+tmp
+->len;
+
+496 
+r
+ = (
+rm_cmd
+ *)
+	`mÆloc
+–(rm_cmdË+ 
+Àn
+ );
+
+497 
+r
+->
+cmd
+ = 
+tmp
+->cmd,Ñ->
+ty≥
+ =Åmp->ty≥,Ñ->
+Àn
+ =Üen;
+
+498 
+	`mem˝y
+–
+r
+->
+‚ame
+, 
+tmp
+->‚ame, 
+Àn
+ );
+
+501 i‡–
+r
+->
+ty≥
+ =
+TYP_DATA_SHARED
+ ) {
+
+502 
+size
+ = 
+r
+->
+Àn
+ + 
+	`°æí
+(
+FILE_PREFIX
+) + 1;
+
+503 
+‚ame
+ = (*)
+	`mÆloc
+–
+size
+ );
+
+504 
+	`¢¥ötf
+–
+‚ame
+, 
+size
+, "%s%.*s", 
+FILE_PREFIX
+, (Ë
+r
+->
+Àn
+,Ñ->fname );
+
+505 i‡–(
+fh
+=
+	`›í
+–
+‚ame
+, 
+O_WRONLY
+|
+O_CREAT
+, 0700)) > 0 );
+
+506 
+	`as£π
+( 0 );
+
+509 
+	`as£π
+( 0 );
+
+512 i‡–
+r
+->
+cmd
+ =
+CMD_CREATE
+ ) {
+
+514 
+	`¥ötf
+–"Re˚ivög fûê[%s] ..\n", 
+‚ame
+ );
+
+515 !
+d⁄e
+)
+
+518 
+	`gë_mesßge
+–
+sock
+, &
+hdr
+, 
+block
+ );
+
+519 i‡–
+hdr
+.
+msgty≥
+ =
+EXIT
+ ) {
+
+520 
+d⁄e
+ = 1;
+
+525 #i‡
+DEBUG
+
+
+526 
+	`¥ötf
+("Re˚ived Block (%u byãsËis:\n", 
+hdr
+.
+Àngth
+);
+
+527 
+	`BIO_dump_Â
+ (
+°dout
+, (c⁄° *)
+block
+, 
+hdr
+.
+Àngth
+);
+
+531 
+rc
+ = 
+	`de¸y±_mesßge
+–(*)
+block
+, 
+hdr
+.
+Àngth
+, 
+key
+,
+
+532 
+∂aöãxt
+, &
+outbyãs
+ );
+
+533 
+	`as£π
+–
+rc
+ == 0 );
+
+534 
+	`wrôe
+–
+fh
+, 
+∂aöãxt
+, 
+outbyãs
+ );
+
+536 #i‡
+DEBUG
+
+
+537 
+	`¥ötf
+("Decrypted Block is:\n");
+
+538 
+	`BIO_dump_Â
+ (
+°dout
+, (c⁄° *)
+∂aöãxt
+, 
+outbyãs
+);
+
+541 
+tŸÆByãs
+ +
+outbyãs
+;
+
+542 
+	`¥ötf
+–"Re˚ived/wrôã¿%ld byã†...\n", 
+tŸÆByãs
+ );
+
+545 
+	`¥ötf
+–"TŸÆ byã†[%ld].\n", 
+tŸÆByãs
+ );
+
+547 
+	`˛o£
+–
+fh
+ );
+
+550 
+	`¥ötf
+–"Sîvî: iŒegÆ comm™d %d\n", 
+r
+->
+cmd
+ );
+
+555 
+hdr
+.
+msgty≥
+ = 
+EXIT
+;
+
+556 
+hdr
+.
+Àngth
+ = 0;
+
+557 
+	`£nd_mesßge
+–
+sock
+, &
+hdr
+, 
+NULL
+ );
+
+560 
+	}
+}
+
+571 
+	$£rvî_£cuª_å™s„r
+(*
+key
+)
+
+574 
+£rvî
+, 
+îr‹ed
+, 
+√wsock
+;
+
+575 
+fd_£t
+ 
+ªadfds
+;
+
+578 
+	`O≥nSSL_add_Æl_Æg‹ôhms
+();
+
+579 
+	`O≥nSSL_add_Æl_cùhîs
+();
+
+580 
+	`ERR_lﬂd_¸y±o_°rögs
+();
+
+583 #ifde‡
+DEBUG
+
+
+584 
+	`ã°_´s
+();
+
+588 
+£rvî
+ = 
+	`£rvî_c⁄√˘
+();
+
+589 
+îr‹ed
+ = 0;
+
+592 
+	`lﬂd_key
+("./íckey", 
+key
+, 
+KEYSIZE
+);
+
+595  !
+îr‹ed
+ )
+
+597 
+	`FD_ZERO
+–&
+ªadfds
+ );
+
+598 
+	`FD_SET
+–
+£rvî
+, &
+ªadfds
+ );
+
+599 i‡–
+	`£À˘
+(
+£rvî
++1, &
+ªadfds
+, 
+NULL
+, NULL, NULL) < 1 )
+
+602 
+msg
+[128];
+
+603 
+	`•rötf
+–
+msg
+, "failure selecting server connection [%.64s]\n",
+
+604 
+	`°ªº‹
+(
+î∫o
+) );
+
+605 
+	`îr‹Mesßge
+–
+msg
+ );
+
+606 
+îr‹ed
+ = 1;
+
+611 i‡–(
+√wsock
+ = 
+	`£rvî_ac˚±
+(
+£rvî
+)) != -1 )
+
+614 
+	`ª˚ive_fûe
+–
+√wsock
+, 
+key
+ );
+
+615 
+	`˛o£
+–
+√wsock
+ );
+
+620 
+msg
+[128];
+
+621 
+	`•rötf
+–
+msg
+, "failureáccepting connection [%.64s]\n",
+
+622 
+	`°ªº‹
+(
+î∫o
+) );
+
+623 
+	`îr‹Mesßge
+–
+msg
+ );
+
+624 
+îr‹ed
+ = 1;
+
+631 
+	}
+}
+
+	@transfer.h
+
+37 
+	#MAX_BLOCK_SIZE
+ 8096
+
+	)
+
+38 
+	#BLOCKSIZE
+ 128
+
+	)
+
+39 
+	#KEYSIZE
+ 32
+
+	)
+
+40 
+	#TAGSIZE
+ 16
+
+	)
+
+41 
+	#IVSIZE
+ 16
+
+	)
+
+43 
+	#PUBKEY_FILE
+ "./pubkey.tmp"
+
+	)
+
+46 
+	#CMD_CREATE
+ 1
+
+	)
+
+47 
+	#TYP_DATA_SHARED
+ 1
+
+	)
+
+53 
+	mCLIENT_INIT_EXCHANGE
+,
+
+54 
+	mSERVER_INIT_RESPONSE
+,
+
+55 
+	mCLIENT_INIT_ACK
+,
+
+56 
+	mSERVER_INIT_ACK
+,
+
+57 
+	mFILE_XFER_INIT
+,
+
+58 
+	mFILE_XFER_BLOCK
+,
+
+59 
+	mEXIT
+,
+
+60 } 
+	tPrŸoMesßgeTy≥
+;
+
+64 
+	mmsgty≥
+;
+
+65 
+	mÀngth
+;
+
+66 } 
+	tPrŸoMesßgeHdr
+;
+
+69 
+	srm_cmd
+ {
+
+70 
+	mcmd
+;
+
+71 
+	mty≥
+;
+
+72 
+	mÀn
+;
+
+73 
+	m‚ame
+[0];
+
+89 
+˛õ¡_£cuª_å™s„r
+–
+rm_cmd
+ *
+r
+, *
+‚ame
+, *
+addªss
+ );
+
+99 
+£rvî_£cuª_å™s„r
+(*
+key
+);
+
+112 
+make_ªq_°ru˘
+–
+rm_cmd
+ **
+Ωå
+, *
+fûíame
+, *
+cmd
+, *
+ty≥
+ );
+
+123 
+gíî©e_p£ud‹™dom_byãs
+(*
+buf„r
+, 
+size
+);
+
+137 
+ßve_key
+(c⁄° *
+‚ame
+, *
+key
+, 
+keysize
+);
+
+	@
+1
+.
+0
+9
+105
+main.c
+siis-network.c
+siis-network.h
+siis-ssl.c
+siis-ssl.h
+siis-util.c
+siis-util.h
+transfer.c
+transfer.h
