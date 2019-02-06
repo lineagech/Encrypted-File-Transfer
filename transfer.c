@@ -261,8 +261,9 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
     if( rc != 1 )
     {
         errorMessage("RAND_bytes failed");
+        return 1;
     }
-
+    return 0;
 }
 
 
@@ -279,7 +280,33 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
 
 void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
 
-  /* Fill in your code here */
+    /* Fill in your code here */
+    int err;
+    FILE* fp;
+    size_t file_size;
+    struct stat* file_stat;
+    
+    file_stat = (struct stat*) malloc(sizeof(struct stat));
+    assert( file_stat != NULL );
+
+    err = stat( fname, file_stat );
+    if( err ) {
+        errorMessage("save_key: file not exist");
+    }
+    else if ( !(file_size = file_stat->st_size) )
+    {
+        errorMessage("save_key: file is empty");  
+    }
+    else {
+        size_t st;
+        fp = fopen(fname, "w");
+        st = fwrite(key, 1, keysize, fp);
+        if( st != (sizeof(key)/sizeof(char)) )
+        {
+            errorMessage("save_key: fwrite is not successful");
+        }   
+        fclose(fp);
+    }    
 }
 
 /**********************************************************************
