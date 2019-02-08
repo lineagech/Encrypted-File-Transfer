@@ -196,13 +196,64 @@ int send_message( int sock, ProtoMessageHdr *hdr, char *block )
 int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsigned char *key, 
 		     unsigned char *buffer, unsigned int *len )
 {
+    // randomly generate an iv, encrypt the plaintext using the
+    // key, and the final buffer starts with the iv, the ciphertext, and
+    // the tag; the tag is for integrity checking
 
-  // randomly generate an iv, encrypt the plaintext using the
-  // key, and the final buffer starts with the iv, the ciphertext, and
-  // the tag; the tag is for integrity checking
+    /* Fill in your code here */
+    int clen = 0;
+    int plen;
+    unsigned char* p_buffer;
+    unsigned char* iv; // 16-bytes
+    unsigned char* ciphertext;
+    unsigned char* tag;
+    
+    iv = (unsigned char*)malloc( IVSIZE );
+    ciphertext = (unsigned char*)malloc( plaintext_len );
+    tag = (unsigned char*)malloc( TAGSIZE );
+    if( generate_pseudorandom_bytes(iv, IVSIZE) )
+    {
+        errorMessage("generate iv randomly failed");
+        return -1;
+    }
+    
+    clen = encrypt( plaintext, plaintext_len, 
+                    (unsigned char*)NULL, 0, 
+                    key, iv, ciphertext, tag );
+    
+#if DEBUG
+    {
+        unsigned char* plaintext_d;
+        printf("Encrypted text is: \n");
+        BIO_dump_fp(stdout, (const char*)ciphertext, (int)clen);
+
+        /* perform decrypt */
+	    plaintext_d = (unsigned char *)malloc( clen+TAGSIZE );
+	    memset( plaintext_d, 0, clen+TAGSIZE ); 
+	    plen = decrypt( ciphertext, clen, (unsigned char *) NULL, 0, 
+		           tag, key, iv, plaintext_d );
+	    assert( plen > 0 );
+
+	    /* Show the decrypted text */
+	    printf("Decrypted text is: \n");
+    	BIO_dump_fp (stdout, (const char *)plaintext_d, (int)plen);
+    }
+#endif
 
 
-  /* Fill in your code here */
+    p_buffer = buffer;
+    memcpy(p_buffer, iv, IVSIZE);
+    *len += IVSIZE;
+
+    p_buffer += IVSIZE;
+    memcpy(p_buffer, ciphertext, clen);
+    *len += clen;
+
+    p_buffer += clen;
+    memcpy(p_buffer, tag, TAGSIZE);
+    *len += TAGSIZE;
+
+    return 0;
 }
 
 
@@ -249,7 +300,7 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
     
     if( rm == RAND_SSLeay())
     {
-        printf("Using default generator()");
+        printf("Using default generator()\n");
     }
     if( !initialized )
     {
@@ -261,7 +312,7 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
     if( rc != 1 )
     {
         errorMessage("RAND_bytes failed");
-        return 1;
+        return -1;
     }
     return 0;
 }
@@ -290,12 +341,8 @@ void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
     assert( file_stat != NULL );
 
     err = stat( fname, file_stat );
-    if( err ) {
-        errorMessage("save_key: file not exist");
-    }
-    else if ( !(file_size = file_stat->st_size) )
-    {
-        errorMessage("save_key: file is empty");  
+    if( !err ) {
+        errorMessage("save_key: file already exists");
     }
     else {
         size_t st;
@@ -524,13 +571,17 @@ int test_aes( )
 	assert( plen > 0 );
 
 	/* Show the decrypted text */
-#if 0
+#if DEBUG
 	printf("Decrypted text is: \n");
 	BIO_dump_fp (stdout, (const char *)plaintext, (int)plen);
 #endif
 	
 	printf("Msg: %s\n", plaintext );
-    
+    { 
+        unsigned char* buffer = malloc(IVSIZE+clen+TAGSIZE);
+        unsigned int len;
+        encrypt_message(plaintext, plaintext_len, key, buffer, &len );
+    }
 	return 0;
 }
 
@@ -663,8 +714,8 @@ int server_secure_transfer(unsigned char *key)
 	server = server_connect();
 	errored = 0;
 
-        // load encryption key
-        load_key("./enckey", key, KEYSIZE);
+    // load encryption key
+    load_key("./enckey", key, KEYSIZE);
 
 	/* Repeat until the socket is closed */
 	while ( !errored )

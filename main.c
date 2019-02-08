@@ -68,6 +68,9 @@ int main( int argc, char **argv )
 #ifdef SERVER
 
     unsigned char key[KEYSIZE];
+#if 0
+    test_aes();
+#endif
 
 	/* Check for arguments */
 	if ( argc < 2 ) 
