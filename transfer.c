@@ -253,6 +253,10 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
     memcpy(p_buffer, tag, TAGSIZE);
     *len += TAGSIZE;
 
+    free(iv);
+    free(ciphertext);
+    free(tag);
+
     return 0;
 }
 
@@ -275,9 +279,41 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
 int decrypt_message( unsigned char *buffer, unsigned int len, unsigned char *key, 
 		     unsigned char *plaintext, unsigned int *plaintext_len )
 {
+    /* Fill in your code here */
+    int clen;
+    int plen;
+    unsigned char* iv;
+    unsigned char* ciphertext;
+    unsigned char* tag;
+    
+    iv = (unsigned char*) malloc( IVSIZE );
+    tag = (unsigned char*) malloc( TAGSIZE );
+    clen = (len-TAGSIZE)-IVSIZE;
+    ciphertext = (unsigned char*) malloc( clen );
 
-  /* Fill in your code here */
+    /* perform decrypt */
+	plaintext = (unsigned char *)malloc( clen+TAGSIZE );
+	memset( plaintext, 0, clen+TAGSIZE ); 
+	plen = decrypt( ciphertext, clen, (unsigned char *) NULL, 0, 
+	                tag, key, iv, plaintext );
+    if( plen < 0 )
+    {
+        errorMessage("decrypt meesage failed");
+        return -1;
+    }
+    *plaintext_len = plen;
+    //assert( plen > 0 );
 
+	/* Show the decrypted text */
+	printf("Decrypted text is: \n");
+    BIO_dump_fp (stdout, (const char *)plaintext, (int)plen);
+  
+
+    free(iv);
+    free(tag);
+    free(ciphertext);
+
+    return 0;
 }
 
 /**********************************************************************
@@ -577,11 +613,13 @@ int test_aes( )
 #endif
 	
 	printf("Msg: %s\n", plaintext );
+#if 0
     { 
         unsigned char* buffer = malloc(IVSIZE+clen+TAGSIZE);
         unsigned int len;
         encrypt_message(plaintext, plaintext_len, key, buffer, &len );
     }
+#endif
 	return 0;
 }
 
