@@ -68,7 +68,7 @@ int main( int argc, char **argv )
 #ifdef SERVER
 
     unsigned char key[KEYSIZE];
-#if 0
+#if 1
     test_aes();
 #endif
 

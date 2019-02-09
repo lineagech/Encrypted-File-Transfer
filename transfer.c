@@ -220,10 +220,17 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
     clen = encrypt( plaintext, plaintext_len, 
                     (unsigned char*)NULL, 0, 
                     key, iv, ciphertext, tag );
-    
-#if DEBUG
+  
+#if 0
     {
         unsigned char* plaintext_d;
+        
+        printf("iv is: \n");
+        BIO_dump_fp(stdout, (const char*)iv, (int)IVSIZE);
+
+        printf("tag is: \n");
+        BIO_dump_fp(stdout, (const char*)tag, (int)TAGSIZE);
+        
         printf("Encrypted text is: \n");
         BIO_dump_fp(stdout, (const char*)ciphertext, (int)clen);
 
@@ -239,8 +246,7 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
     	BIO_dump_fp (stdout, (const char *)plaintext_d, (int)plen);
     }
 #endif
-
-
+    *len = 0;
     p_buffer = buffer;
     memcpy(p_buffer, iv, IVSIZE);
     *len += IVSIZE;
@@ -290,6 +296,22 @@ int decrypt_message( unsigned char *buffer, unsigned int len, unsigned char *key
     tag = (unsigned char*) malloc( TAGSIZE );
     clen = (len-TAGSIZE)-IVSIZE;
     ciphertext = (unsigned char*) malloc( clen );
+    
+    memcpy(iv, buffer, IVSIZE);
+    memcpy(tag, buffer+len-TAGSIZE, TAGSIZE);
+    memcpy(ciphertext, buffer+IVSIZE, clen);
+
+#if 0
+    printf("\n\ndecrypt_message:\n");
+    printf("iv is: \n");
+    BIO_dump_fp(stdout, (const char*)iv, (int)IVSIZE);
+
+    printf("tag is: \n");
+    BIO_dump_fp(stdout, (const char*)tag, (int)TAGSIZE);
+        
+    printf("Encrypted text is: \n");
+    BIO_dump_fp(stdout, (const char*)ciphertext, (int)clen);
+#endif
 
     /* perform decrypt */
 	plaintext = (unsigned char *)malloc( clen+TAGSIZE );
@@ -613,11 +635,14 @@ int test_aes( )
 #endif
 	
 	printf("Msg: %s\n", plaintext );
-#if 0
+#if 1
     { 
+        printf("\n");
+        printf("\n");
         unsigned char* buffer = malloc(IVSIZE+clen+TAGSIZE);
         unsigned int len;
         encrypt_message(plaintext, plaintext_len, key, buffer, &len );
+        decrypt_message( buffer, len, key, plaintext, &plaintext_len );
     }
 #endif
 	return 0;
