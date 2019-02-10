@@ -528,9 +528,15 @@ int transfer_file( struct rm_cmd *r, char *fname, int sock,
 #endif
 
 			/* Encrypt block and send */
-                        /* Fill in your code here */
+            /* Fill in your code here */
+            unsigned char buffer[IVSIZE+BLOCKSIZE+TAGSIZE];
+		    unsigned int len = 0;
+            encrypt_message( (unsigned char*)block, (unsigned int)readBytes, key, buffer, &len );
 
-		}
+            hdr.msgtype = FILE_XFER_BLOCK;
+            hdr.length = len;
+            send_message( sock, &hdr, (char*)buffer );
+        }
 	}
 
 	/* Send the ack, wait for server ack */
