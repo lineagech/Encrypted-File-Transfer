@@ -356,10 +356,10 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
     unsigned int err;
     RAND_METHOD* rm = RAND_get_rand_method();
     
-    if( rm == RAND_SSLeay())
-    {
-        printf("Using default generator()\n");
-    }
+    //if( rm == RAND_SSLeay())
+    //{
+    //    printf("Using default generator()\n");
+    //}
     if( !initialized )
     {
         RAND_poll();

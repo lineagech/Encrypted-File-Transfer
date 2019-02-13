@@ -15,7 +15,7 @@ CMD_CREATE	transfer.h	46;"	d
 CRLIB	Makefile	/^CRLIB=crlib$/;"	m
 CRLIBOBJS	Makefile	/^CRLIBOBJS=transfer.o \\$/;"	m
 EXIT	transfer.h	/^     EXIT,                   \/* exit the protocol *\/$/;"	e	enum:__anon1
-FILE_PREFIX	transfer.c	472;"	d	file:
+FILE_PREFIX	transfer.c	591;"	d	file:
 FILE_XFER_BLOCK	transfer.h	/^     FILE_XFER_BLOCK,        \/* transfer file block *\/$/;"	e	enum:__anon1
 FILE_XFER_INIT	transfer.h	/^     FILE_XFER_INIT,         \/* initialize transfer *\/$/;"	e	enum:__anon1
 INADDR_NONE	siis-network.h	37;"	d
