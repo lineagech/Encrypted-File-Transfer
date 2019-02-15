@@ -406,7 +406,7 @@ void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
     //else 
     {
         size_t st;
-        fp = fopen(fname, "w");
+        fp = fopen(fname, "wb");
         assert(fp);
         st = fwrite(key, 1, keysize, fp);
         if( st != keysize )
@@ -451,7 +451,7 @@ void load_key(const char *fname, unsigned char *key, unsigned int keysize) {
     }
     else {
         size_t st;
-        fp = fopen(fname, "r");
+        fp = fopen(fname, "rb");
         assert(fp != NULL);
         st = fread(key, 1, keysize, fp);
         if( st != keysize )
