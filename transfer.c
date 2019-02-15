@@ -397,12 +397,14 @@ void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
     
     file_stat = (struct stat*) malloc(sizeof(struct stat));
     assert( file_stat != NULL );
-
-    err = stat( fname, file_stat );
-    if( !err ) {
-        errorMessage("save_key: file already exists");
-    }
-    else {
+    
+    /* The key can just be re-generated */
+    //err = stat( fname, file_stat );
+    //if( !err ) {
+    //    errorMessage("save_key: file already exists");
+    //}
+    //else 
+    {
         size_t st;
         fp = fopen(fname, "w");
         assert(fp);
@@ -434,7 +436,7 @@ void load_key(const char *fname, unsigned char *key, unsigned int keysize) {
     FILE* fp;
     size_t file_size;  
     struct stat* fstat;
-
+    
     fstat = (struct stat*) malloc(sizeof(struct stat));
     assert( fstat != NULL );
     
