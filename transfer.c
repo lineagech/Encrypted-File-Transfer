@@ -202,7 +202,9 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
 
     /* Fill in your code here */
     int clen = 0;
+#if 0
     int plen;
+#endif
     unsigned char* p_buffer;
     unsigned char* iv; // 16-bytes
     unsigned char* ciphertext;
@@ -246,6 +248,7 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
     	BIO_dump_fp (stdout, (const char *)plaintext_d, (int)plen);
     }
 #endif
+    /* copy to the buffer being transmited */
     *len = 0;
     p_buffer = buffer;
     memcpy(p_buffer, iv, IVSIZE);
@@ -258,7 +261,8 @@ int encrypt_message( unsigned char *plaintext, unsigned int plaintext_len, unsig
     p_buffer += clen;
     memcpy(p_buffer, tag, TAGSIZE);
     *len += TAGSIZE;
-
+    
+    /* free memory */
     free(iv);
     free(ciphertext);
     free(tag);
@@ -314,7 +318,6 @@ int decrypt_message( unsigned char *buffer, unsigned int len, unsigned char *key
 #endif
 
     /* perform decrypt */
-	plaintext = (unsigned char *)malloc( clen+TAGSIZE );
 	memset( plaintext, 0, clen+TAGSIZE ); 
 	plen = decrypt( ciphertext, clen, (unsigned char *) NULL, 0, 
 	                tag, key, iv, plaintext );
@@ -325,16 +328,15 @@ int decrypt_message( unsigned char *buffer, unsigned int len, unsigned char *key
     }
     *plaintext_len = plen;
     //assert( plen > 0 );
-
+#if 0
 	/* Show the decrypted text */
 	printf("Decrypted text is: \n");
     BIO_dump_fp (stdout, (const char *)plaintext, (int)plen);
-  
-
+#endif
     free(iv);
     free(tag);
     free(ciphertext);
-
+    
     return 0;
 }
 
@@ -354,12 +356,13 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
     static int initialized = 0;
     int rc;
     unsigned int err;
+#if 0
     RAND_METHOD* rm = RAND_get_rand_method();
-    
-    //if( rm == RAND_SSLeay())
-    //{
-    //    printf("Using default generator()\n");
-    //}
+    if( rm == RAND_SSLeay())
+    {
+        printf("Using default generator()\n");
+    }
+#endif
     if( !initialized )
     {
         RAND_poll();
@@ -390,20 +393,25 @@ int generate_pseudorandom_bytes(unsigned char *buffer, unsigned int size)
 void save_key(const char *fname, unsigned char *key, unsigned int keysize) {
 
     /* Fill in your code here */
+#if 0    
     int err;
+#endif
     FILE* fp;
+#if 0
     size_t file_size;
+#endif
     struct stat* file_stat;
-    
     file_stat = (struct stat*) malloc(sizeof(struct stat));
     assert( file_stat != NULL );
     
     /* The key can just be re-generated */
-    //err = stat( fname, file_stat );
-    //if( !err ) {
-    //    errorMessage("save_key: file already exists");
-    //}
-    //else 
+#if 0
+    err = stat( fname, file_stat );
+    if( !err ) {
+        errorMessage("save_key: file already exists");
+    }
+    else
+#endif
     {
         size_t st;
         fp = fopen(fname, "wb");
@@ -434,7 +442,6 @@ void load_key(const char *fname, unsigned char *key, unsigned int keysize) {
     /* Fill in your code here */
     int err;
     FILE* fp;
-    size_t file_size;  
     struct stat* fstat;
     
     fstat = (struct stat*) malloc(sizeof(struct stat));
@@ -458,7 +465,7 @@ void load_key(const char *fname, unsigned char *key, unsigned int keysize) {
         {
             errorMessage("load_key: fwrite is not successful");
         }
-        close(fp);
+        fclose(fp);
     }
 }
 
@@ -777,7 +784,7 @@ int server_secure_transfer(unsigned char *key)
 	ERR_load_crypto_strings();
 
 	// Test AES symmetric key encryption
-#ifdef DEBUG
+#if 0
 	test_aes();
 #endif
 
